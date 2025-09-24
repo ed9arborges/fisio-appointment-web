@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme{
+  --color-*: initial; /* para usar só as cores q definimos */
+
+  --color-blue-dark: #23e3a3;
+  --color-blue-base: #1B1464;
+  --color-blue-light: #8996eb;
+
+  --color-gray-100: #00003A;
+  --color-gray-200: #B2AFB6;
+  --color-gray-300: #2E2C30;
+  --color-gray-400: #3E3C41;
+  --color-gray-500: #7A767F;
+  --color-gray-600: #F5F4F5;
+
+  --color-yellow-400: #DBC170;
+  --color-yellow-500: #B8952E;
+  --color-yellow-600: #846F2E;
+
+  --color-feedback-danger: #d03e3e;
+  --color-feedback-danger-20: rgba(208, 62, 62, 0.2);
+
+  --color-feedback-open: #cc3d6a;
+  --color-feedback-open-20: rgba(204, 61, 106, 0.2);
+
+  --color-feedback-progress: #355ec5;
+  --color-feedback-progress-20: rgba(53, 94, 197, 0.2);
+
+  --color-feedback-done: #508b26;
+  --color-feedback-done-20: rgba(80, 139, 38, 0.2);
+  
+  --font-sans: "Catamaran", sans-serif;
+}
