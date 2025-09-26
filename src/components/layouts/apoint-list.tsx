@@ -4,6 +4,7 @@ import Icon from "@/components/basic/icon"
 import Calendar from "@/components/Calendar"
 import AppointmentSection from "@/components/layouts/appointment-section"
 import { appointmentApi, type GroupedAppointments } from "@/api/appointments"
+import { formatDate } from "@/utils/date"
 import SunHorizonIcon from "@/assets/icons/SunHorizon.svg?react"
 import CloudSunIcon from "@/assets/icons/CloudSun.svg?react"
 import MoonStarsIcon from "@/assets/icons/MoonStars.svg?react"
@@ -30,13 +31,7 @@ export default function ApointList({
   const [isViewCalendarOpen, setIsViewCalendarOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  function formatDate(date: Date) {
-    return date.toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    })
-  }
+  // formatDate now imported from utils/date
 
   useEffect(() => {
     loadViewData(viewDate)
@@ -142,18 +137,21 @@ export default function ApointList({
           timeRange="09h-12h"
           appointments={appointments.morning}
           iconComponent={SunHorizonIcon}
+          onDelete={() => loadViewData(viewDate)}
         />
         <AppointmentSection
           title="Tarde"
           timeRange="13h-18h"
           appointments={appointments.afternoon}
           iconComponent={CloudSunIcon}
+          onDelete={() => loadViewData(viewDate)}
         />
         <AppointmentSection
           title="Noite"
           timeRange="19h-21h"
           appointments={appointments.evening}
           iconComponent={MoonStarsIcon}
+          onDelete={() => loadViewData(viewDate)}
         />
       </div>
       {isLoading && (

@@ -4,6 +4,7 @@ import Button from "@/components/basic/button"
 import Icon from "@/components/basic/icon"
 import Calendar from "@/components/Calendar"
 import TimeSlotButton from "@/components/basic/time-slot-button"
+import { formatDate, formatDateForAPI } from "@/utils/date"
 import UserSquareIcon from "@/assets/icons/UserSquare.svg?react"
 import { appointmentApi, type AvailableSlots } from "@/api/appointments"
 import CalendarBlankIcon from "@/assets/icons/CalendarBlank.svg?react"
@@ -43,16 +44,7 @@ const defaultSlots: AvailableSlots = {
   ],
 }
 
-function formatDate(date: Date) {
-  return date.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  })
-}
-function formatDateForAPI(date: Date) {
-  return date.toISOString().split("T")[0]
-}
+// removed duplicate formatDate and formatDateForAPI, now imported from utils/AppError
 function isTimeSlotPast(date: Date, timeSlot: string) {
   const now = new Date()
   const [hours, minutes] = timeSlot.split(":").map(Number)
@@ -238,17 +230,16 @@ export default function ApointCreate({
           </Text>
         </div>
       )}
-      
-        <Button
-          variant="primary"
-          size="lg"
-          className="w-full text-gray-600 disabled:opacity-50"
-          onClick={handleCreateAppointment}
-          disabled={isLoading || !selectedTime || !clientName.trim()}
-        >
-          {isLoading ? "AGENDANDO..." : "AGENDAR"}
-        </Button>
-     
+
+      <Button
+        variant="primary"
+        size="lg"
+        className="w-full text-gray-600 disabled:opacity-50"
+        onClick={handleCreateAppointment}
+        disabled={isLoading || !selectedTime || !clientName.trim()}
+      >
+        {isLoading ? "AGENDANDO..." : "AGENDAR"}
+      </Button>
     </section>
   )
 }
