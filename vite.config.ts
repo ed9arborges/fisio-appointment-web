@@ -10,4 +10,20 @@ export default defineConfig({
       "@": "/src",
     },
   },
+  server: {
+    port: 5173,
+    host: true, // Listen on all addresses
+    proxy: {
+      "/api": {
+        target: "http://localhost:3333",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
+  preview: {
+    port: 5173,
+    host: true,
+  },
 })
