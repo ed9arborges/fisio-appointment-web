@@ -8,7 +8,6 @@ import { formatDate, formatDateForAPI } from "@/utils/date"
 import UserSquareIcon from "@/assets/icons/UserSquare.svg?react"
 import { appointmentApi, type AvailableSlots } from "@/api/appointments"
 import CalendarBlankIcon from "@/assets/icons/CalendarBlank.svg?react"
-import CaretDownIcon from "@/assets/icons/CaretDown.svg?react"
 
 export interface TimeSlot {
   time: string
@@ -43,15 +42,6 @@ const defaultSlots: AvailableSlots = {
     { time: "20:00", available: true },
     { time: "21:00", available: true },
   ],
-}
-
-// removed duplicate formatDate and formatDateForAPI, now imported from utils/AppError
-function isTimeSlotPast(date: Date, timeSlot: string) {
-  const now = new Date()
-  const [hours, minutes] = timeSlot.split(":").map(Number)
-  const slotDateTime = new Date(date)
-  slotDateTime.setHours(hours, minutes, 0, 0)
-  return slotDateTime < now
 }
 
 export default function ApointCreate({

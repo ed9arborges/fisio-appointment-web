@@ -82,8 +82,7 @@ export default function InputSelect({
     { value: "mock3", label: "Mockup Item 3" },
   ],
   value,
-  onChange,
-  ...props
+  onChange
 }: InputSelectProps) {
   const [isOpen, setIsOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(value ?? items[0].value)

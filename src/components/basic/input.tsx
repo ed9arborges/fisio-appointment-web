@@ -2,7 +2,7 @@ import React from "react"
 import { cva, type VariantProps, cx } from "class-variance-authority"
 import { textVariants } from "./text"
 import Text from "./text"
-import Icon from "./basic/icon"
+import Icon from "./icon"
 
 export const inputTextVariants = cva(
   "border-b border-solid focus:border-pink-base bg-transparent outline-none p-0",
