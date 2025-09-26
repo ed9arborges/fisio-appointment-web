@@ -240,7 +240,7 @@ export default function Calendar({
                     isPrevMonth || isNextMonth
                       ? "bg-gray-300 cursor-not-allowed"
                       : isPastDateCheck
-                      ? "bg-gray-200 cursor-not-allowed"
+                      ? "cursor-not-allowed"
                       : isSelected
                       ? "bg-gray-400 border border-yellow-600"
                       : "bg-gray-300 hover:bg-gray-400"
@@ -257,7 +257,7 @@ export default function Calendar({
                         ? "text-yellow-600 font-bold"
                         : isCurrentDay
                         ? "text-gray-600 font-bold"
-                        : "text-gray-400"
+                        : "text-gray-600"
                     }`}
                   >
                     {day}
