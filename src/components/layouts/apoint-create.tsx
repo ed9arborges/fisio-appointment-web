@@ -66,9 +66,6 @@ export default function ApointCreate({
       setIsLoading(true)
       setError("")
       const dateStr = formatDateForAPI(date)
-      const healthCheck = await fetch(`http://localhost:3333/health`)
-      if (!healthCheck.ok)
-        throw new Error(`API server not responding: ${healthCheck.status}`)
       const slotsData = await appointmentApi.getAvailableSlots(dateStr)
       setAvailableSlots(slotsData)
     } catch (err) {
