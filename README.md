@@ -23,7 +23,15 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
    npm install
    ```
 
-2. **Run the development server**
+2. **Environment variables**
+
+   Copy `.env.example` to `.env` and point it at your API (Render URL in production):
+
+   ```env
+   VITE_API_BASE_URL=http://localhost:3333
+   ```
+
+3. **Run the development server**
 
    ```bash
    npm run dev
@@ -31,13 +39,13 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
 
    Vite will expose the app on `http://localhost:5173` by default.
 
-3. **Build for production**
+4. **Build for production**
 
    ```bash
    npm run build
    ```
 
-4. **Preview the production build locally**
+5. **Preview the production build locally**
 
    ```bash
    npm run preview
@@ -52,7 +60,7 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
 
 ## API Configuration
 
-The frontend expects the API to be reachable at `http://localhost:3333`. To point at a different backend, update `API_BASE_URL` in `src/api/appointments.ts`.
+Set `VITE_API_BASE_URL` to the Render (or other host) URL in `.env` before building. The value is baked into the bundle at build time.
 
 ## Project Structure
 

@@ -1,4 +1,8 @@
-const API_BASE_URL = "http://localhost:3333"
+const API_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(
+    /\/$/,
+    ""
+  ) ?? "http://localhost:3333"
 
 export interface Appointment {
   id: string
