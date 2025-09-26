@@ -50,8 +50,6 @@ class AppointmentApi {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies for CORS
-        mode: "cors", // Explicitly set CORS mode
         ...options,
       })
 
