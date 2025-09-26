@@ -51,6 +51,10 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
    npm run preview
    ```
 
+6. **(Optional) Configure Vercel SPA routing**
+
+   Deployments on Vercel should include the provided `vercel.json`, which rewrites unknown routes back to `index.html`. This avoids 404 responses when refreshing deep links such as `/appointments`.
+
 ## Available Scripts
 
 - `npm run dev` – start Vite in development mode
