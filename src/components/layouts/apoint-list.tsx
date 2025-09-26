@@ -16,11 +16,13 @@ import CalendarBlankIcon from "@/assets/icons/CalendarBlank.svg?react"
 interface ApointListProps {
   initialDate?: Date
   refreshKey?: number
+  onAppointmentChanged?: () => void
 }
 
 export default function ApointList({
   initialDate,
   refreshKey,
+  onAppointmentChanged,
 }: ApointListProps) {
   const [viewDate, setViewDate] = useState(initialDate || new Date())
   const [appointments, setAppointments] = useState<GroupedAppointments>({
@@ -50,6 +52,22 @@ export default function ApointList({
       // Optionally handle error
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  async function handleDeleteAppointment(id: string) {
+    const confirmed = window.confirm(
+      "Deseja realmente excluir este agendamento?"
+    )
+    if (!confirmed) return
+
+    try {
+      await appointmentApi.deleteAppointment(id)
+      await loadViewData(viewDate)
+      if (onAppointmentChanged) onAppointmentChanged()
+    } catch (err) {
+      // Optionally handle error
+      console.error(err)
     }
   }
 
@@ -137,21 +155,21 @@ export default function ApointList({
           timeRange="09h-12h"
           appointments={appointments.morning}
           iconComponent={SunHorizonIcon}
-          onDelete={() => loadViewData(viewDate)}
+          onDelete={handleDeleteAppointment}
         />
         <AppointmentSection
           title="Tarde"
           timeRange="13h-18h"
           appointments={appointments.afternoon}
           iconComponent={CloudSunIcon}
-          onDelete={() => loadViewData(viewDate)}
+          onDelete={handleDeleteAppointment}
         />
         <AppointmentSection
           title="Noite"
           timeRange="19h-21h"
           appointments={appointments.evening}
           iconComponent={MoonStarsIcon}
-          onDelete={() => loadViewData(viewDate)}
+          onDelete={handleDeleteAppointment}
         />
       </div>
       {isLoading && (

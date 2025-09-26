@@ -52,12 +52,17 @@ class AppointmentApi {
       console.log(`Response status: ${response.status}`)
 
       if (!response.ok) {
-        const error = await response
-          .json()
-          .catch(() => ({
-            message: `HTTP Error ${response.status}: ${response.statusText}`,
-          }))
+        const error = await response.json().catch(() => ({
+          message: `HTTP Error ${response.status}: ${response.statusText}`,
+        }))
         throw new Error(error.message || `HTTP Error ${response.status}`)
+      }
+
+      if (
+        response.status === 204 ||
+        response.headers.get("content-length") === "0"
+      ) {
+        return undefined as T
       }
 
       return response.json()

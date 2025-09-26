@@ -19,7 +19,8 @@ export interface TimeSlot {
 }
 
 interface ApointCreateProps {
-  onAppointmentCreated?: () => void
+  refreshKey?: number
+  onAppointmentChanged?: () => void
 }
 
 const defaultSlots: AvailableSlots = {
@@ -54,7 +55,8 @@ function isTimeSlotPast(date: Date, timeSlot: string) {
 }
 
 export default function ApointCreate({
-  onAppointmentCreated,
+  refreshKey,
+  onAppointmentChanged,
 }: ApointCreateProps) {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [selectedTime, setSelectedTime] = useState("")
@@ -67,7 +69,7 @@ export default function ApointCreate({
 
   useEffect(() => {
     loadSchedulingData(selectedDate)
-  }, [selectedDate])
+  }, [selectedDate, refreshKey])
 
   async function loadSchedulingData(date: Date) {
     try {
@@ -100,7 +102,7 @@ export default function ApointCreate({
       await loadSchedulingData(selectedDate)
       setSelectedTime("")
       setClientName("")
-      if (onAppointmentCreated) onAppointmentCreated()
+      if (onAppointmentChanged) onAppointmentChanged()
       alert("Agendamento criado com sucesso!")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erro ao criar agendamento")
