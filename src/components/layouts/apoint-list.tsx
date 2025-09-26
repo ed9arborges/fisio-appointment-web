@@ -4,7 +4,7 @@ import Icon from "@/components/basic/icon"
 import Calendar from "@/components/Calendar"
 import AppointmentSection from "@/components/layouts/appointment-section"
 import { appointmentApi, type GroupedAppointments } from "@/api/appointments"
-import { formatDate } from "@/utils/date"
+import { formatDate, formatDateForAPI } from "@/utils/date"
 import SunHorizonIcon from "@/assets/icons/SunHorizon.svg?react"
 import CloudSunIcon from "@/assets/icons/CloudSun.svg?react"
 import MoonStarsIcon from "@/assets/icons/MoonStars.svg?react"
@@ -43,7 +43,7 @@ export default function ApointList({
   async function loadViewData(date: Date) {
     setIsLoading(true)
     try {
-      const dateStr = date.toISOString().split("T")[0]
+      const dateStr = formatDateForAPI(date)
       const appointmentsData = await appointmentApi.getAppointmentsByDate(
         dateStr
       )
