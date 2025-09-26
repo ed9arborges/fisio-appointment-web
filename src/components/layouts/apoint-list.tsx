@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Text from "@/components/basic/text"
 import Icon from "@/components/basic/icon"
 import Calendar from "@/components/Calendar"
-import AppointmentSection from "@/components/layout/appointment-section"
+import AppointmentSection from "@/components/layouts/appointment-section"
 import { appointmentApi, type GroupedAppointments } from "@/api/appointments"
 import SunHorizonIcon from "@/assets/icons/SunHorizon.svg?react"
 import CloudSunIcon from "@/assets/icons/CloudSun.svg?react"
@@ -59,8 +59,8 @@ export default function ApointList({
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="flex items-start justify-between mb-8">
+    <section className="max-w-4xl mx-auto">
+      <header className="flex items-start justify-between mb-8">
         <div>
           <Text variant="text-xl-bold" className="text-gray-600 mb-1">
             Sua agenda
@@ -90,7 +90,10 @@ export default function ApointList({
               onClick={() => setIsViewCalendarOpen(!isViewCalendarOpen)}
               className="flex items-center gap-2 px-3 py-3 border border-yellow-500 rounded-lg min-w-38 h-12 hover:border-yellow-600 transition-colors"
             >
-              <Icon svg={CalendarBlankIcon} className="w-5 h-5 fill-yellow-500" />
+              <Icon
+                svg={CalendarBlankIcon}
+                className="w-5 h-5 fill-yellow-500"
+              />
               <div className="flex flex-col items-start flex-1">
                 <Text variant="heading-md" className="text-gray-200">
                   {formatDate(viewDate)}
@@ -132,7 +135,7 @@ export default function ApointList({
             onClose={() => setIsViewCalendarOpen(false)}
           />
         </div>
-      </div>
+      </header>
       <div className="space-y-3">
         <AppointmentSection
           title="Manhã"
@@ -160,6 +163,6 @@ export default function ApointList({
           </Text>
         </div>
       )}
-    </div>
+    </section>
   )
 }

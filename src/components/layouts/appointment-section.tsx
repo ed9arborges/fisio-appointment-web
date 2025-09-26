@@ -15,8 +15,8 @@ const AppointmentSection = ({
   appointments: sectionAppointments,
   iconComponent,
 }: AppointmentSectionProps) => (
-  <div className="border border-yellow-400 rounded-lg">
-    <div className="flex items-center gap-3 px-5 py-3 border-b border-gray-300">
+  <section className="border border-yellow-400 rounded-lg">
+    <header className="flex items-center gap-3 px-5 py-3 border-b border-gray-300">
       <Icon svg={iconComponent} className="w-5 h-5 fill-yellow-600" />
       <Text variant="text-sm" className="text-gray-600 flex-1">
         {title}
@@ -24,7 +24,7 @@ const AppointmentSection = ({
       <Text variant="text-sm" className="text-gray-600">
         {timeRange}
       </Text>
-    </div>
+    </header>
     <div className="p-5 space-y-1">
       {sectionAppointments.map((appointment, index) => (
         <div key={index} className="flex items-center gap-5 py-1 rounded-lg">
@@ -45,7 +45,7 @@ const AppointmentSection = ({
         </Text>
       )}
     </div>
-  </div>
+  </section>
 )
 
 export default AppointmentSection

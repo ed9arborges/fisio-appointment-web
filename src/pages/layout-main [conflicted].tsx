@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router"
 import { Header } from "@/components/basic/header"
-import MainContent from "@/components/layout/main-content"
+import MainContent from "@/components/layouts/main-content"
 
 export default function LayoutMain() {
   const location = useLocation()
@@ -16,7 +16,6 @@ export default function LayoutMain() {
       <MainContent>
         <Outlet />
       </MainContent>
-
     </>
   )
 }
