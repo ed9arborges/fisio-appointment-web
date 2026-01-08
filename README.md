@@ -10,6 +10,13 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
 - Delete interactions with optimistic UI updates
 - Responsive layout tailored for desktop and tablet usage
 
+## Backend API
+
+The frontend consumes the Fisio Appointment API hosted in a separate repository. Keep the API running locally (or reachable remotely) for data to load correctly.
+
+- Repo: [Fisio Appointment API](https://github.com/ed9arborges/fisio-appointment-api)
+- Local default base URL: `http://localhost:3333`
+
 ## Prerequisites
 
 - Node.js 18 or newer
@@ -50,6 +57,13 @@ Modern React frontend for the Fisio Appointment platform. It provides a calendar
    ```bash
    npm run preview
    ```
+
+## Screenshots
+
+Add your captures to `public/screenshots` so they render in this README. Suggested filenames are below—replace them if you use different names.
+
+- Desktop/Mobile Responsive:
+   <img alt="Appointment flow on desktop" src="./public/screenshots/mockup.png" width="1024" />
 
 6. **(Optional) Configure Vercel SPA routing**
 
@@ -94,6 +108,6 @@ web/
 ## Development Tips
 
 - Keep the API server running so slot availability and appointment data load correctly.
-- Use the page at `/appointments` to view, filter, and delete appointments for specific days.
+- Use the page at `/` to view, filter, and delete appointments for specific days.
 - Run `npm run lint` before committing to catch common issues.
 - Consider adjusting Tailwind configuration in `tailwind.config.ts` or `vite.config.ts` when introducing new design tokens.
